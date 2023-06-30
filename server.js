@@ -19,7 +19,7 @@ app.get("/", (req, res) => {
 });
 
 app.post("/completions", async (req, res) => {
-  const { questions } = req.body;
+  const { prompt } = req.body;
   try {
     const configuration = new Configuration({
       apiKey: process.env.OPENAI_API_KEY,
@@ -29,7 +29,7 @@ app.post("/completions", async (req, res) => {
       model: "gpt-3.5-turbo",
       messages: [
         { role: "system", content: "You are a helpful assistant." },
-        { role: "system", content: questions },
+        { role: "system", content: prompt },
       ],
     });
     const { message } = completion.data.choices[0];
