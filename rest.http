@@ -1,0 +1,9 @@
+###post method
+@url=http://localhost:8000/completions
+@u=https://dalle-z6rw.onrender.com
+POST   {{url}}
+Content-Type: application/json
+
+{
+    "prompt":"i am sumit"
+}
