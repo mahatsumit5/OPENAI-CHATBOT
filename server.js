@@ -1,7 +1,7 @@
 import cors from "cors";
 import { OpenAI } from "openai";
 import express from "express";
-import dotenv from "dotenv";
+import * as dotenv from "dotenv";
 dotenv.config();
 
 const PORT = process.env.PORT || 8000;
@@ -12,7 +12,7 @@ app.use(express.json());
 app.get("/", (req, res) => {
   res.json({
     status: "success",
-    message: "Server isup and running",
+    message: "Server is up and running",
   });
 });
 
@@ -33,10 +33,9 @@ app.post("/completions", async (req, res) => {
       message,
     });
   } catch (error) {
-    const { message } = error;
     res.json({
       status: "error",
-      message,
+      message: error.message,
     });
   }
 });
