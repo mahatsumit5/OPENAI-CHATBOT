@@ -1,20 +1,19 @@
 import cors from "cors";
 import { OpenAI } from "openai";
 import express from "express";
-import path from "path";
 import * as dotenv from "dotenv";
 dotenv.config();
 
 const PORT = process.env.port || 8000;
 const app = express();
-const __dirname = path.resolve();
-console.log(__dirname);
 // middleware
 app.use(cors());
 app.use(express.json());
-app.use(express.static(__dirname + "/build"));
 app.get("/", (req, res) => {
-  res.sendFile("/build/index.html");
+  res.json({
+    status: "success",
+    message: "Server isup and running",
+  });
 });
 
 app.post("/completions", async (req, res) => {
