@@ -1,7 +1,7 @@
 import cors from "cors";
 import { OpenAI } from "openai";
 import express from "express";
-import * as dotenv from "dotenv";
+import dotenv from "dotenv";
 dotenv.config();
 
 const PORT = process.env.PORT || 8000;
